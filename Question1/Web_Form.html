@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration</title>
+<script src="./array.js" ></script>
+<script>
+         function clearb(){
+            document.getElementById("username").value="";
+            document.getElementById("pass").value="";
+            document.getElementById("email").value="";
+            document.getElementById("phone").value="";
+    
+        }
+        function validata() {
+
+            var names=['Sanjana','Aadhya','Eeshan','Nithin'];
+			var checker;
+			checker = 1;
+            var lower = /[a-z]/g;
+            var upper = /[A-Z]/g;
+            var numb = /[0-9]/g;
+            var special = /[!@#$%^&*]/g;
+            if(checker == 1){
+
+           
+            if(document.getElementById("username").value.length<5 || document.getElementById("username").value.length>15) {
+                checker++;
+                alert("Username is not in the length of 5 to 15......");
+            }
+			
+          else if(!document.getElementById("pass").value.match(lower) || !document.getElementById("pass").value.match(upper) || !document.getElementById("pass").value.match(numb) || !document.getElementById("pass").value.match(special)) {
+                checker++;
+                alert("Invalid password, please use all the characters.........");
+            }
+
+            else if(!document.getElementById("mail").value.match(/[a-z A-Z 0-9]+[@]+[a-z]+[.]+[a-z]/)) {
+                checker++;
+                alert("Email id is not valid.");
+            }
+
+         else if(document.getElementById("phone").value.length!=10) {
+                checker++;
+                alert("Contact must have 10 digits");
+            }
+
+		  else( checker == 1)
+            {
+				for(let i =0; i<names.length; i++)
+				{ 
+					if(document.getElementById("username").value == names[i]){
+                        checker++;
+						alert('user name exists');
+					}
+				}
+                
+                
+            }
+		
+        }
+            if(checker == 1)
+            {	
+                document.getElementById("printhere").innerHTML="successfully registered";
+				alert('Successfully Registered');
+            }
+        }
+
+
+
+
+
+
+        function selectIt()
+    {
+        var list=document.getElementById("p_display");
+       
+        
+        var e=document.getElementById("sl_Items").value;
+       
+    if(e=="laptop")z
+    {
+       
+        list.innerHTML=""
+        for (let index = 0; index < Laptop.length; index++) {
+           
+
+            list.innerHTML+="<li>"+Laptop[index]+"</li>"
+        }
+
+    }
+ if(e=="Mobile")
+    {
+        
+        list.innerHTML=""
+        for (let index = 0; index < Mobile.length; index++) {
+          
+          
+            list.innerHTML+="<li>"+Mobile[index]+"</li>"
+        }
+        
+    }
+    if(e=="Tv")
+    {
+       
+        list.innerHTML=""
+        for (let index = 0; index < TV.length; index++) {
+       
+           
+            list.innerHTML+="<li>"+TV[index]+"</li>"
+        }
+    }
+   
+    }
+    
+
+    </script>
+</head>
+<body style="background-color: yellow;">
+	<h1 style="color: blue">Registration Form</h1>
+	<form id="adduser">
+
+
+
+		<p>
+			Enter Name* : <input type="text" id="username">
+		</p>
+		<p>
+			Enter Password*: <input type="password" id="pass">
+		</p>
+		<p>
+			Enter Email id: <input type="text" id="mail">
+		</p>
+		<p>
+			Enter Phone No: <input type="text" id="phone">
+        </p>
+        
+<form action="/action_page.php">
+    <label for="date">Date:</label>
+    <input type="date" id="today" name="date">
+  
+  </form>
+  <form action="/action_page.php">
+    <label for="cars">Choose any car:</label>
+    <select name="cars" id="cars">
+      <option value="volvo">Volvo</option>
+      <option value="Maruthi">Maruthi</option>
+      <option value="Tata">Tata</option>
+      <option value="Audi">Audi</option>
+    </select>
+    <br><br>
+   
+    <p>Please select your Gender:</p>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label><br>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br>
+    <input type="radio" id="other" name="gender" value="other">
+    <label for="other">Other</label>
+  
+    <br>  
+  
+    <p>Please select your age:</p>
+    <input type="radio" id="age1" name="age" value="30">
+    <label for="age1">0 - 20</label><br>
+    <input type="radio" id="age2" name="age" value="60">
+    <label for="age2">21 - 40</label><br>  
+    <input type="radio" id="age3" name="age" value="100">
+    <label for="age3">41 - 100</label><br><br>
+
+
+		<p>
+			<button onclick="validata()">Submit</button>
+			<button onclick="clearb()">Clear</button>
+		</p>
+        <p id="printhere"></p>
+        <div>
+            <p>
+                <h1 style="background-color:tomato">Select an item </h1>
+                <select id="sl_Items" onchange="selectIt()"> 
+                    <option value="" >select options</option>
+                    <option value="Tv" >Television</option>
+                    <option value="Mobile" >Mobile</option>
+                    <option value="Laptop" >Laptop</option>
+                    
+                </select>
+               
+            </p>
+            <ul id="p_display">
+    
+            </ul>
+        </div>
+    </form>
+    
+</body>
+</html>
